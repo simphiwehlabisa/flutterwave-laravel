@@ -4,17 +4,12 @@ Click [here](https://developer.flutterwave.com/reference#webhook) to learn more 
 
 For every transaction, Flutterwave will send a post request of the transaction to you, follow these steps to set it up
 
-
-
-
 ## 1. Setup your webhook routes
 
 ```php
 Route::post('/webhook/flutterwave', [FlutterwaveController::class, 'webhook'])->name('webhook');
 
 ```
-
-
 
 ## 2. Add your webhook secret hash to your `.env`
 
@@ -54,7 +49,7 @@ protected $except = [
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use KingFlamez\Rave\Facades\Rave as Flutterwave;
+use Kasipay\Rave\Facades\Rave as Flutterwave;
 
 class FlutterwaveController extends Controller
 {

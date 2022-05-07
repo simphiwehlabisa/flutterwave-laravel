@@ -1,8 +1,7 @@
 <?php
 
-namespace KingFlamez\Rave\Helpers;
+namespace Kasipay\Rave\Helpers;
 
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Http;
 
 /**
@@ -20,14 +19,13 @@ class Banks
     /**
      * Construct
      */
-    function __construct(String $publicKey, String $secretKey, String $baseUrl)
+    public function __construct(String $publicKey, String $secretKey, String $baseUrl)
     {
 
         $this->publicKey = $publicKey;
         $this->secretKey = $secretKey;
         $this->baseUrl = $baseUrl;
     }
-
 
     /**
      * Get Nigerian Banks
@@ -39,7 +37,6 @@ class Banks
             $this->baseUrl . '/banks/NG'
         )->json();
 
-
         // sort banks by name
         usort($banks['data'], function ($a, $b) {
             return strcmp($a['name'], $b['name']);
@@ -47,7 +44,6 @@ class Banks
 
         return $banks;
     }
-
 
     /**
      * Get Ghanaian Banks
@@ -59,7 +55,6 @@ class Banks
             $this->baseUrl . '/banks/GH'
         )->json();
 
-
         // sort banks by name
         usort($banks['data'], function ($a, $b) {
             return strcmp($a['name'], $b['name']);
@@ -67,7 +62,6 @@ class Banks
 
         return $banks;
     }
-
 
     /**
      * Get Kenyan Banks
@@ -79,7 +73,6 @@ class Banks
             $this->baseUrl . '/banks/KE'
         )->json();
 
-
         // sort banks by name
         usort($banks['data'], function ($a, $b) {
             return strcmp($a['name'], $b['name']);
@@ -87,7 +80,6 @@ class Banks
 
         return $banks;
     }
-
 
     /**
      * Get Ugandan Banks
@@ -99,7 +91,6 @@ class Banks
             $this->baseUrl . '/banks/UG'
         )->json();
 
-
         // sort banks by name
         usort($banks['data'], function ($a, $b) {
             return strcmp($a['name'], $b['name']);
@@ -107,7 +98,6 @@ class Banks
 
         return $banks;
     }
-
 
     /**
      * Get South African Banks
@@ -119,7 +109,6 @@ class Banks
             $this->baseUrl . '/banks/ZA'
         )->json();
 
-
         // sort banks by name
         usort($banks['data'], function ($a, $b) {
             return strcmp($a['name'], $b['name']);
@@ -127,7 +116,6 @@ class Banks
 
         return $banks;
     }
-
 
     /**
      * Get Tanzanian Banks
@@ -139,7 +127,6 @@ class Banks
             $this->baseUrl . '/banks/TZ'
         )->json();
 
-
         // sort banks by name
         usort($banks['data'], function ($a, $b) {
             return strcmp($a['name'], $b['name']);
@@ -147,7 +134,6 @@ class Banks
 
         return $banks;
     }
-
 
     /**
      * Get Tanzanian Banks
@@ -157,9 +143,8 @@ class Banks
     public function branches($bankId)
     {
         $branches = Http::withToken($this->secretKey)->get(
-            $this->baseUrl . '/banks/'.$bankId.'/branches'
+            $this->baseUrl . '/banks/' . $bankId . '/branches'
         )->json();
-
 
         // sort banks by name
         // usort($banks['data'], function ($a, $b) {

@@ -1,8 +1,7 @@
 <?php
 
-namespace KingFlamez\Rave\Helpers;
+namespace Kasipay\Rave\Helpers;
 
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Http;
 
 /**
@@ -20,14 +19,13 @@ class Beneficiary
     /**
      * Construct
      */
-    function __construct(String $publicKey, String $secretKey, String $baseUrl)
+    public function __construct(String $publicKey, String $secretKey, String $baseUrl)
     {
 
         $this->publicKey = $publicKey;
         $this->secretKey = $secretKey;
         $this->baseUrl = $baseUrl;
     }
-
 
     /**
      * Create a beneficiary
@@ -44,9 +42,6 @@ class Beneficiary
         return $beneficiary;
     }
 
-
-
-
     /**
      * Get All Beneficiaries
      * @param $data
@@ -62,9 +57,6 @@ class Beneficiary
         return $beneficiaries;
     }
 
-
-
-
     /**
      * Get A Beneficiary
      * @param $id
@@ -78,9 +70,6 @@ class Beneficiary
 
         return $beneficiary;
     }
-
-
-
 
     /**
      * Delete A Beneficiary

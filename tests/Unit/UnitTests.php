@@ -2,13 +2,11 @@
 
 namespace Tests\Unit;
 
-use Carbon\Carbon;
-use Tests\TestCase;
+use Kasipay\Rave\Rave;
 use ReflectionClass;
 use ReflectionProperty;
-use KingFlamez\Rave\Rave;
-use Tests\Stubs\PaymentEventHandler;
 use Tests\Concerns\ExtractProperties;
+use Tests\TestCase;
 
 class UnitTests extends TestCase
 {
@@ -16,12 +14,12 @@ class UnitTests extends TestCase
     use ExtractProperties;
 
     /**
-     * Tests if app returns \KingFlamez\Rave\Rave if called with ailas.
+     * Tests if app returns \Kasipay\Rave\Rave if called with ailas.
      *
      * @test
-     * @return \KingFlamez\Rave\Rave
+     * @return \Kasipay\Rave\Rave
      */
-    function initiateRaveFromApp()
+    public function initiateRaveFromApp()
     {
 
         $rave = $this->app->make("laravelrave");
@@ -37,11 +35,11 @@ class UnitTests extends TestCase
      * @test
      *
      * @depends initiateRaveFromApp
-     * @param \KingFlamez\Rave\Rave $rave
+     * @param \Kasipay\Rave\Rave $rave
      * @return void
      * @throws \ReflectionException
      */
-    function initializeWithDefaultValues(Rave $rave)
+    public function initializeWithDefaultValues(Rave $rave)
     {
 
         $reflector = new ReflectionClass($rave);
@@ -49,9 +47,18 @@ class UnitTests extends TestCase
         $methods = $reflector->getProperties(ReflectionProperty::IS_PROTECTED);
 
         foreach ($methods as $method) {
-            if ($method->getName() == 'baseUrl') $baseUrl = $method;
-            if ($method->getName() == 'secretKey') $secretKey = $method;
-            if ($method->getName() == 'publicKey') $publicKey = $method;
+            if ($method->getName() == 'baseUrl') {
+                $baseUrl = $method;
+            }
+
+            if ($method->getName() == 'secretKey') {
+                $secretKey = $method;
+            }
+
+            if ($method->getName() == 'publicKey') {
+                $publicKey = $method;
+            }
+
         };
 
         $baseUrl->setAccessible(true);
@@ -74,7 +81,7 @@ class UnitTests extends TestCase
      * @param Rave $rave
      * @return void
      */
-    function generateReference(Rave $rave)
+    public function generateReference(Rave $rave)
     {
 
         $ref = $rave->generateReference();
@@ -93,7 +100,7 @@ class UnitTests extends TestCase
      * @return void
      * @throws \ReflectionException
      */
-    function settingKeys(Rave $rave)
+    public function settingKeys(Rave $rave)
     {
 
         $newPublicKey = "public_key";

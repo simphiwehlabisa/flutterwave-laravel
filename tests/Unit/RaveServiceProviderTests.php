@@ -2,13 +2,13 @@
 
 namespace Tests\Unit;
 
+use Kasipay\Rave\Rave;
 use Tests\TestCase;
-use KingFlamez\Rave\Rave;
 
 class RaveServiceProviderTests extends TestCase
 {
     /**
-     * Tests if service provider Binds alias "laravelrave" to \KingFlamez\Rave\Rave
+     * Tests if service provider Binds alias "laravelrave" to \Kasipay\Rave\Rave
      *
      * @test
      */
@@ -17,13 +17,13 @@ class RaveServiceProviderTests extends TestCase
         $this->assertTrue($this->app->bound('laravelrave'));
     }
     /**
-     * Test if service provider returns \Rave as alias for \KingFlamez\Rave\Rave
+     * Test if service provider returns \Rave as alias for \Kasipay\Rave\Rave
      *
      * @test
      */
     public function hasAliased()
     {
-        $this->assertTrue($this->app->isAlias("KingFlamez\Rave\Rave"));
-        $this->assertEquals('laravelrave', $this->app->getAlias("KingFlamez\Rave\Rave"));
+        $this->assertTrue($this->app->isAlias("Kasipay\Rave\Rave"));
+        $this->assertEquals('laravelrave', $this->app->getAlias("Kasipay\Rave\Rave"));
     }
 }

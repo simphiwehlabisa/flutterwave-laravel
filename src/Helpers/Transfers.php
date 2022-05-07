@@ -1,8 +1,7 @@
 <?php
 
-namespace KingFlamez\Rave\Helpers;
+namespace Kasipay\Rave\Helpers;
 
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Http;
 
 /**
@@ -20,14 +19,13 @@ class Transfers
     /**
      * Construct
      */
-    function __construct(String $publicKey, String $secretKey, String $baseUrl)
+    public function __construct(String $publicKey, String $secretKey, String $baseUrl)
     {
 
         $this->publicKey = $publicKey;
         $this->secretKey = $secretKey;
         $this->baseUrl = $baseUrl;
     }
-
 
     /**
      * Initiate a transfer
@@ -44,7 +42,6 @@ class Transfers
         return $transfer;
     }
 
-
     /**
      * Initiate a bulk transfer
      * @param $data
@@ -60,7 +57,6 @@ class Transfers
         return $transfer;
     }
 
-
     /**
      * Retry a transfer
      * @param $transferId
@@ -74,7 +70,6 @@ class Transfers
 
         return $transfer;
     }
-
 
     /**
      * Get Fees
@@ -92,7 +87,6 @@ class Transfers
         return $transfer;
     }
 
-
     /**
      * Get All Transfers
      * @param $data
@@ -108,7 +102,6 @@ class Transfers
         return $transfers;
     }
 
-
     /**
      * Get A Transfer
      * @param $id
@@ -123,7 +116,6 @@ class Transfers
         return $transfer;
     }
 
-
     /**
      * Get A Transfer Retry
      * @param $id
@@ -132,13 +124,11 @@ class Transfers
     public function fetchRetries($id)
     {
         $transfer = Http::withToken($this->secretKey)->get(
-            $this->baseUrl . '/transfers/' . $id .'/retries'
+            $this->baseUrl . '/transfers/' . $id . '/retries'
         )->json();
 
         return $transfer;
     }
-
-
 
     /**
      * Get Transfer Rates

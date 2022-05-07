@@ -1,8 +1,7 @@
 <?php
 
-namespace KingFlamez\Rave\Helpers;
+namespace Kasipay\Rave\Helpers;
 
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Http;
 
 /**
@@ -20,14 +19,13 @@ class Verification
     /**
      * Construct
      */
-    function __construct(String $publicKey, String $secretKey, String $baseUrl)
+    public function __construct(String $publicKey, String $secretKey, String $baseUrl)
     {
 
         $this->publicKey = $publicKey;
         $this->secretKey = $secretKey;
         $this->baseUrl = $baseUrl;
     }
-
 
     /**
      * Confirm bank account
@@ -44,7 +42,6 @@ class Verification
 
         return $account;
     }
-
 
     /**
      * Verify BVN
@@ -87,7 +84,5 @@ class Verification
 
         return $card;
     }
-
-
 
 }

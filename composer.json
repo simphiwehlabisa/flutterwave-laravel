@@ -27,7 +27,7 @@
             "src/Rave.php"
         ],
         "psr-4": {
-          "KingFlamez\\Rave\\": "src/"
+          "Kasipay\\Rave\\": "src/"
         }
     },
     "autoload-dev": {
@@ -41,10 +41,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "KingFlamez\\Rave\\RaveServiceProvider"
+                "Kasipay\\Rave\\RaveServiceProvider"
             ],
             "aliases": {
-                "Rave": "KingFlamez\\Rave\\Facades\\Rave"
+                "Rave": "Kasipay\\Rave\\Facades\\Rave"
             }
         }
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace KingFlamez\Rave;
+namespace Kasipay\Rave;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -15,10 +15,10 @@ class RaveServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $config = realpath(__DIR__.'/../resources/config/flutterwave.php');
+        $config = realpath(__DIR__ . '/../resources/config/flutterwave.php');
 
         $this->publishes([
-            $config => config_path('flutterwave.php')
+            $config => config_path('flutterwave.php'),
         ]);
     }
 
@@ -36,14 +36,14 @@ class RaveServiceProvider extends ServiceProvider
 
         });
 
-        $this->app->alias('laravelrave', "KingFlamez\Rave\Rave");
+        $this->app->alias('laravelrave', "Kasipay\Rave\Rave");
     }
 
     /**
-    * Get the services provided by the provider
-    *
-    * @return array
-    */
+     * Get the services provided by the provider
+     *
+     * @return array
+     */
     public function provides()
     {
         return ['laravelrave'];

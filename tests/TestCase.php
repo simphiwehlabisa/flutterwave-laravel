@@ -4,9 +4,9 @@ namespace Tests;
 
 use Mockery;
 use Orchestra\Testbench\TestCase as BaseTestCase;
-use phpDocumentor\Reflection\Types\Void_;
 
-abstract class TestCase extends BaseTestCase {
+abstract class TestCase extends BaseTestCase
+{
 
     public $m;
 
@@ -16,7 +16,8 @@ abstract class TestCase extends BaseTestCase {
 
     protected $formData;
 
-    function setUp () : void {
+    public function setUp(): void
+    {
 
         $this->m = new Mockery;
 
@@ -34,7 +35,8 @@ abstract class TestCase extends BaseTestCase {
      *
      * @return void
      */
-    function tearDown() : void {
+    public function tearDown(): void
+    {
 
         $this->m->close();
 
@@ -49,7 +51,7 @@ abstract class TestCase extends BaseTestCase {
      */
     protected function getPackageProviders($app)
     {
-        return [ "\KingFlamez\Rave\RaveServiceProvider" ];
+        return ["\Kasipay\Rave\RaveServiceProvider"];
     }
 
     /**
@@ -61,7 +63,7 @@ abstract class TestCase extends BaseTestCase {
     protected function getPackageAliases($app)
     {
         return [
-            "Rave" => "\KingFlamez\Rave\Facades\Rave"
+            "Rave" => "\Kasipay\Rave\Facades\Rave",
         ];
     }
 

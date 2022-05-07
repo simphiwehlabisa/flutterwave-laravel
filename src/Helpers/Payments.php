@@ -1,8 +1,7 @@
 <?php
 
-namespace KingFlamez\Rave\Helpers;
+namespace Kasipay\Rave\Helpers;
 
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Http;
 
 /**
@@ -20,14 +19,13 @@ class Payments
     /**
      * Construct
      */
-    function __construct(String $publicKey, String $secretKey, String $baseUrl)
+    public function __construct(String $publicKey, String $secretKey, String $baseUrl)
     {
 
         $this->publicKey = $publicKey;
         $this->secretKey = $secretKey;
         $this->baseUrl = $baseUrl;
     }
-
 
     /**
      * Charge via ACH Payment
@@ -43,8 +41,6 @@ class Payments
 
         return $payment;
     }
-
-
 
     /**
      * Charge via NGN Bank Transfer
@@ -62,8 +58,6 @@ class Payments
         return $payment;
     }
 
-
-
     /**
      * Charge via Mobile Money Ghana
      * @param $data
@@ -79,7 +73,7 @@ class Payments
         )->json();
 
         if ($payment['status'] === 'success') {
-            return  [
+            return [
                 'status' => $payment['status'],
                 'message' => $payment['message'],
                 'data' => $payment['meta']['authorization'],
@@ -88,7 +82,6 @@ class Payments
 
         return $payment;
     }
-
 
     /**
      * Charge via Mobile Money Rwanda
@@ -105,7 +98,7 @@ class Payments
         )->json();
 
         if ($payment['status'] === 'success') {
-            return  [
+            return [
                 'status' => $payment['status'],
                 'message' => $payment['message'],
                 'data' => $payment['meta']['authorization'],
@@ -114,7 +107,6 @@ class Payments
 
         return $payment;
     }
-
 
     /**
      * Charge via Mobile Money Uganda
@@ -131,7 +123,7 @@ class Payments
         )->json();
 
         if ($payment['status'] === 'success') {
-            return  [
+            return [
                 'status' => $payment['status'],
                 'message' => $payment['message'],
                 'data' => $payment['meta']['authorization'],
@@ -140,7 +132,6 @@ class Payments
 
         return $payment;
     }
-
 
     /**
      * Charge via Mobile Money Zambia
@@ -157,7 +148,7 @@ class Payments
         )->json();
 
         if ($payment['status'] === 'success') {
-            return  [
+            return [
                 'status' => $payment['status'],
                 'message' => $payment['message'],
                 'data' => $payment['meta']['authorization'],
@@ -166,7 +157,6 @@ class Payments
 
         return $payment;
     }
-
 
     /**
      * Charge via Mpesa
@@ -185,7 +175,6 @@ class Payments
         return $payment;
     }
 
-
     /**
      * Charge via Mpesa
      * @param $data
@@ -202,7 +191,6 @@ class Payments
 
         return $payment;
     }
-
 
     /**
      * Charge via Mpesa

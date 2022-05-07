@@ -1,14 +1,13 @@
 <?php
 
-namespace KingFlamez\Rave;
+namespace Kasipay\Rave;
 
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Http;
-use KingFlamez\Rave\Helpers\Banks;
-use KingFlamez\Rave\Helpers\Beneficiary;
-use KingFlamez\Rave\Helpers\Payments;
-use KingFlamez\Rave\Helpers\Transfers;
-use KingFlamez\Rave\Helpers\Verification;
+use Kasipay\Rave\Helpers\Banks;
+use Kasipay\Rave\Helpers\Beneficiary;
+use Kasipay\Rave\Helpers\Payments;
+use Kasipay\Rave\Helpers\Transfers;
+use Kasipay\Rave\Helpers\Verification;
 
 /**
  * Flutterwave's Rave payment laravel package
@@ -25,7 +24,7 @@ class Rave
     /**
      * Construct
      */
-    function __construct()
+    public function __construct()
     {
 
         $this->publicKey = config('flutterwave.publicKey');
@@ -34,14 +33,13 @@ class Rave
         $this->baseUrl = 'https://api.flutterwave.com/v3';
     }
 
-
     /**
      * Generates a unique reference
      * @param $transactionPrefix
      * @return string
      */
 
-    public function generateReference(String $transactionPrefix = NULL)
+    public function generateReference(String $transactionPrefix = null)
     {
         if ($transactionPrefix) {
             return $transactionPrefix . '_' . uniqid(time());
@@ -65,7 +63,6 @@ class Rave
         return $payment;
     }
 
-
     /**
      * Gets a transaction ID depending on the redirect structure
      * @return string
@@ -88,7 +85,7 @@ class Rave
      */
     public function verifyTransaction($id)
     {
-        $data =  Http::withToken($this->secretKey)->get($this->baseUrl . "/transactions/" . $id . '/verify')->json();
+        $data = Http::withToken($this->secretKey)->get($this->baseUrl . "/transactions/" . $id . '/verify')->json();
         return $data;
     }
 
@@ -152,7 +149,7 @@ class Rave
         return $beneficiary;
     }
 
-      /**
+    /**
      * Verification
      * @return Verification
      */

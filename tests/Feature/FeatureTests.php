@@ -2,13 +2,14 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
-use Tests\Stubs\Request;
-use KingFlamez\Rave\Rave;
-use Tests\Stubs\PaymentEventHandler;
+use Kasipay\Rave\Rave;
 use Tests\Concerns\ExtractProperties;
+use Tests\Stubs\PaymentEventHandler;
+use Tests\Stubs\Request;
+use Tests\TestCase;
 
-class FeatureTests extends TestCase {
+class FeatureTests extends TestCase
+{
 
     use ExtractProperties;
 
@@ -18,7 +19,8 @@ class FeatureTests extends TestCase {
      * @test
      * @return void
      */
-    function getParams () {
+    public function getParams()
+    {
 
         $request = new Request();
         $request->subaccounts = [];
@@ -47,7 +49,8 @@ class FeatureTests extends TestCase {
      * @return void
      * @throws \ReflectionException
      */
-    function creatingCheckSum(Rave $rave) {
+    public function creatingCheckSum(Rave $rave)
+    {
 
         #$rave = $rave->createReferenceNumber();
         $publicKey = "FLWPUBK-MOCK-1cf610974690c2560cb4c36f4921244a-X";
@@ -70,7 +73,8 @@ class FeatureTests extends TestCase {
      * @param Rave $rave
      * @return void
      */
-    function paymentInitialize(Rave $rave) {
+    public function paymentInitialize(Rave $rave)
+    {
 
         $response = $rave->eventHandler(new PaymentEventHandler)->initialize("http://localhost");
 
@@ -102,7 +106,8 @@ class FeatureTests extends TestCase {
      * @test
      * @return void
      */
-    function paymentCancelledTest() {
+    public function paymentCancelledTest()
+    {
         $request = new Request();
         $request->cancelled = true;
         $rave = new Rave();
@@ -113,7 +118,7 @@ class FeatureTests extends TestCase {
 
         $returned = $rave->paymentCanceled($ref);
 
-        $this->assertTrue( is_object($returned));
+        $this->assertTrue(is_object($returned));
 
         // Tests if json has certain keys when payment is cancelled.
 
@@ -182,14 +187,15 @@ class FeatureTests extends TestCase {
      *
      * @return array
      */
-    function providesResponse () {
+    public function providesResponse()
+    {
 
         return [
             [
                 [
                     "body" => [
                         "status" => "unknown",
-                        "data" => ["status", "unknown"]
+                        "data" => ["status", "unknown"],
                     ],
                 ],
             ],
@@ -198,28 +204,28 @@ class FeatureTests extends TestCase {
                     "body" => [
                         "status" => "success",
                     ],
-                ]
+                ],
             ],
             [
                 [
                     "body" => [
                         "status" => "success",
                         "data" => [
-                            "status" => "failed"
-                        ]
+                            "status" => "failed",
+                        ],
                     ],
-                ]
+                ],
             ],
             [
                 [
                     "body" => [
                         "status" => "success",
                         "data" => [
-                            "status" => "successful"
-                        ]
+                            "status" => "successful",
+                        ],
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
     }
 }

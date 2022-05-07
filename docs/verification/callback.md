@@ -2,16 +2,12 @@
 
 If the `redirect_url` is added to your payment data, Flutterwave redirects there after every payment request
 
-
-
-
 ## 1. Setup your callback route
 
 ```php
 // The callback url after a payment
 Route::get('/rave/callback', [FlutterwaveController::class, 'callback'])->name('callback');
 ```
-
 
 ## 2. Setup your Controller
 
@@ -23,7 +19,7 @@ Route::get('/rave/callback', [FlutterwaveController::class, 'callback'])->name('
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use KingFlamez\Rave\Facades\Rave as Flutterwave;
+use Kasipay\Rave\Facades\Rave as Flutterwave;
 
 class FlutterwaveController extends Controller
 {
@@ -55,7 +51,6 @@ class FlutterwaveController extends Controller
 
 ```
 
-
 ## 3. Make sure to add `'redirect_url' => route('callback'),` to all your payment requests that will use the callback
 
 eg
@@ -65,7 +60,7 @@ eg
 
 namespace App\Http\Controllers;
 
-use KingFlamez\Rave\Facades\Rave as Flutterwave;
+use Kasipay\Rave\Facades\Rave as Flutterwave;
 
 class FlutterwaveController extends Controller
 {

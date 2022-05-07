@@ -3,6 +3,7 @@
 This will guide you in installing the package
 
 ## Prerequisite
+
 [PHP](https://php.net) 7.2+, [Laravel](https://laravel.com) and [Composer](https://getcomposer.org) are required.
 
 To get the latest version of Flutterwave, simply use composer
@@ -10,6 +11,7 @@ To get the latest version of Flutterwave, simply use composer
 ```bash
 composer require kingflamez/laravelrave
 ```
+
 For **`Laravel => 5.5`**, skip this step and go to [**`configuration`**](#configuration)
 
 Once Flutterwave is installed, you need to register the service provider. Open up `config/app.php` and add the following to the `providers` key.
@@ -20,7 +22,7 @@ Once Flutterwave is installed, you need to register the service provider. Open u
      * Package Service Providers...
      */
     ...
-    KingFlamez\Rave\RaveServiceProvider::class,
+    Kasipay\Rave\RaveServiceProvider::class,
     ...
 ]
 ```
@@ -30,7 +32,7 @@ Also add this to the `aliases`
 ```php
 'aliases' => [
     ...
-    'Rave' => KingFlamez\Rave\Facades\Rave::class,
+    'Rave' => Kasipay\Rave\Facades\Rave::class,
     ...
 ]
 ```
@@ -40,7 +42,7 @@ Also add this to the `aliases`
 Publish the configuration file using this command:
 
 ```bash
-php artisan vendor:publish --provider="KingFlamez\Rave\RaveServiceProvider"
+php artisan vendor:publish --provider="Kasipay\Rave\RaveServiceProvider"
 ```
 
 A configuration-file named **`flutterwave.php`** will be placed in your **`config`** directory
@@ -57,8 +59,8 @@ FLW_SECRET_KEY=FLWSECK-xxxxxxxxxxxxxxxxxxxxx-X
 FLW_SECRET_HASH='My_lovelysite123'
 ```
 
-* **FLW_PUBLIC_KEY -** This is the api public key gotten from your dashboard (compulsory)
+- **FLW_PUBLIC_KEY -** This is the api public key gotten from your dashboard (compulsory)
 
-* **FLW_SECRET_KEY -** This is the api secret key gotten from your dashboard (compulsory)
+- **FLW_SECRET_KEY -** This is the api secret key gotten from your dashboard (compulsory)
 
-* **FLW_SECRET_HASH -** This is the secret hash for your webhook
+- **FLW_SECRET_HASH -** This is the secret hash for your webhook
