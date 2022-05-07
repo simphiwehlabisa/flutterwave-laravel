@@ -54,6 +54,31 @@ class Payments
     }
 
     /**
+     * Charge via Mobile Bank Card In South Africa
+     * @param $data
+     * @return object
+     */
+
+    public function card(array $data)
+    {
+        $data['currency'] = 'ZAR';
+        $payment = Http::withToken($this->secretKey)->post(
+            $this->baseUrl . '/charges?type=card',
+            $data
+        )->json();
+
+        if ($payment['status'] === 'success') {
+            return [
+                'status' => $payment['status'],
+                'message' => $payment['message'],
+                'data' => $payment['meta']['authorization'],
+            ];
+        }
+
+        return $payment;
+    }
+
+    /**
      * Charge via Mobile Money Ghana
      * @param $data
      * @return object
