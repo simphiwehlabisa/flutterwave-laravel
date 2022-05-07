@@ -9,11 +9,6 @@ use Kasipay\Rave\Helpers\Payments;
 use Kasipay\Rave\Helpers\Transfers;
 use Kasipay\Rave\Helpers\Verification;
 
-/**
- * Flutterwave's Rave payment laravel package
- * @author Oluwole Adebiyi - Flamez <flamekeed@gmail.com>
- * @version 3
- **/
 class Rave
 {
 

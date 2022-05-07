@@ -4,11 +4,6 @@ namespace Kasipay\Rave\Helpers;
 
 use Illuminate\Support\Facades\Http;
 
-/**
- * Flutterwave's Rave payment laravel package
- * @author Oluwole Adebiyi - Flamez <flamekeed@gmail.com>
- * @version 3
- **/
 class Transfers
 {
 
